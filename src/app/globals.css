@@ -49,10 +49,12 @@
 
   /* Home screen design tokens (from Figma "Home Service - iOS" file) */
   --font-alumni: var(--font-alumni-sans);
+  --color-hs-blue-400: #5e97f0;
   --color-hs-blue-500: #0364ca;
   --color-hs-blue-800: #283694;
   --color-hs-pink-300: #f986b8;
   --color-hs-pink-400: #ea5ea5;
+  --color-hs-pink-500: #d63e8a;
   --color-hs-pink-600: #e95b99;
   --color-hs-pink-1000: #380c23;
   --color-hs-neutral-0: #ffffff;

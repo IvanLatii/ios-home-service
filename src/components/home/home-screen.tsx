@@ -12,6 +12,7 @@ import {
   SERVICE_CATEGORIES,
   SERVICE_CHIPS,
 } from "@/lib/home-data";
+import { getPatternGradientBackground } from "@/lib/pattern-background";
 
 /**
  * Recreation of the "402 / Home" frame from the Home Service iOS Figma file.
@@ -22,16 +23,7 @@ export function HomeScreen() {
     <div className="flex min-h-dvh w-full justify-center bg-hs-neutral-800/10">
       <div
         className="relative flex h-dvh w-full max-w-[402px] flex-col overflow-y-auto sm:shadow-xl [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        style={{
-          // "pattern" (baked to 10% opacity) sits as the bottom-most layer of the
-          // header background, beneath the brand gradient — guaranteed regardless
-          // of sibling stacking order since it's part of this element's own paint.
-          backgroundImage:
-            "url(/figma/pattern-10.png), linear-gradient(121.841deg, var(--color-hs-blue-500) 0%, var(--color-hs-blue-800) 47.617%)",
-          backgroundSize: "1024px 1024px, auto",
-          backgroundPosition: "top left, top left",
-          backgroundRepeat: "no-repeat, no-repeat",
-        }}
+        style={getPatternGradientBackground(121.841)}
       >
         <HomeTopBar address="Shevchenka st., 47" notificationCount={8} />
         <HomeStats bonuses={487} currency="₴" orders={2} />
