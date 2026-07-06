@@ -1,22 +1,28 @@
-import { CreditCard, House, Info, Plus, User } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
-
+import {
+  IconCardsThree,
+  IconHouseFill,
+  IconInfo,
+  IconUser,
+} from "@/components/icons/figma-icons";
 import { cn } from "@/lib/utils";
+import type { ComponentType, SVGProps } from "react";
+
+type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
 
 interface NavTab {
   id: string;
   label: string;
-  icon: LucideIcon;
+  icon: IconComponent;
 }
 
 const NAV_TABS: NavTab[] = [
-  { id: "home", label: "Home", icon: House },
-  { id: "orders", label: "Orders", icon: CreditCard },
+  { id: "home", label: "Home", icon: IconHouseFill },
+  { id: "orders", label: "Orders", icon: IconCardsThree },
 ];
 
 const NAV_TABS_END: NavTab[] = [
-  { id: "info", label: "Info", icon: Info },
-  { id: "profile", label: "Profile", icon: User },
+  { id: "info", label: "Info", icon: IconInfo },
+  { id: "profile", label: "Profile", icon: IconUser },
 ];
 
 interface HomeBottomNavProps {
@@ -39,9 +45,12 @@ export function HomeBottomNav({ activeTabId = "home" }: HomeBottomNavProps) {
             <button
               type="button"
               aria-label="Create new order"
-              className="flex w-full items-center justify-center rounded-full bg-[linear-gradient(158.003deg,var(--color-hs-blue-500)_0%,var(--color-hs-blue-800)_47.617%)] px-2.5 py-3"
+              className="flex h-[40px] w-[54px] items-center justify-center rounded-full bg-[linear-gradient(158.003deg,var(--color-hs-blue-500)_0%,var(--color-hs-blue-800)_47.617%)]"
             >
-              <Plus className="size-4 text-hs-neutral-0" strokeWidth={2.5} />
+              <span className="relative block size-4" aria-hidden>
+                <span className="absolute top-0 left-1/2 h-4 w-[2px] -translate-x-1/2 rounded-[0.5px] bg-hs-neutral-0" />
+                <span className="absolute top-1/2 left-0 h-[2px] w-4 -translate-y-1/2 rounded-[0.5px] bg-hs-neutral-0" />
+              </span>
             </button>
           </div>
           {NAV_TABS_END.map((tab) => (
@@ -69,11 +78,7 @@ function NavButton({ tab, isActive }: { tab: NavTab; isActive: boolean }) {
         isActive && "bg-hs-neutral-50"
       )}
     >
-      <Icon
-        className={cn("size-6", isActive ? "text-hs-neutral-800" : "text-hs-neutral-600")}
-        strokeWidth={isActive ? 2 : 1.75}
-        fill={isActive ? "currentColor" : "none"}
-      />
+      <Icon className={cn("size-6", isActive ? "text-hs-neutral-800" : "text-hs-neutral-400")} />
     </button>
   );
 }

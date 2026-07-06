@@ -18,27 +18,28 @@ export function HomeStats({ bonuses, currency, orders }: HomeStatsProps) {
             <p className="font-alumni text-7xl leading-[0.66] font-semibold tracking-[-0.72px] text-hs-neutral-0">
               {bonuses}
             </p>
-            <span className="pt-[3px] font-alumni text-2xl leading-5 font-semibold text-hs-neutral-0">
+            <span
+              className="font-alumni text-4xl leading-5 font-semibold text-hs-neutral-0"
+              style={{ marginTop: "-4px" }}
+            >
               {currency}
             </span>
           </div>
         </div>
-        <div className="flex flex-1 items-center gap-2">
+        <div className="flex flex-1 items-end gap-2">
           <div className="flex flex-1 flex-col gap-1.5 pt-3 pb-4 pl-4 opacity-[0.96] text-hs-neutral-0">
             <p className="font-sans text-sm leading-5 font-medium tracking-[-0.14px]">Orders</p>
             <p className="font-alumni text-7xl leading-[0.66] font-semibold tracking-[-0.72px]">
               {orders}
             </p>
           </div>
-          <div className="flex h-full items-end pb-4">
-            <button
-              type="button"
-              className="flex size-12 shrink-0 items-center justify-center rounded-[8px] bg-hs-neutral-0"
-              aria-label="Add"
-            >
-              <Plus className="size-5 text-hs-neutral-800" strokeWidth={2} />
-            </button>
-          </div>
+          <button
+            type="button"
+            className="mb-4 flex size-12 shrink-0 items-center justify-center rounded-[8px] bg-hs-neutral-0"
+            aria-label="Add"
+          >
+            <Plus className="size-5 text-hs-neutral-800" strokeWidth={2} />
+          </button>
         </div>
       </div>
     </div>

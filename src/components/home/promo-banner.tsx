@@ -10,15 +10,19 @@ export function PromoBanner({
   secondaryActionLabel,
 }: PromoBannerProps) {
   return (
-    <div className="relative flex w-full items-center gap-4 overflow-hidden rounded-[8px] bg-[linear-gradient(166.648deg,var(--color-hs-pink-300)_0%,var(--color-hs-pink-600)_47.617%)] p-4">
-      {/* Decorative placeholders standing in for the unavailable photo assets */}
-      <div
+    <div className="relative flex w-full items-center gap-4 rounded-[8px] bg-[linear-gradient(166.648deg,var(--color-hs-pink-300)_0%,var(--color-hs-pink-600)_47.617%)] p-4">
+      {/* Master/worker photo — exact asset from the Figma "main-banner" layer */}
+      <img
+        src="/figma/promo-person-blur.png"
+        alt=""
         aria-hidden
-        className="pointer-events-none absolute -top-8 right-[-40px] size-[220px] rounded-full bg-white/15 blur-2xl"
+        className="pointer-events-none absolute top-[-29px] left-[117px] h-[197px] w-[273px] object-bottom opacity-10 blur-[12px]"
       />
-      <div
+      <img
+        src="/figma/promo-person.png"
+        alt=""
         aria-hidden
-        className="pointer-events-none absolute -top-16 right-[10px] size-[180px] rounded-full bg-white/10 blur-xl"
+        className="pointer-events-none absolute top-[-59px] left-[110px] h-[227px] w-[287px] object-cover"
       />
       <div className="relative flex w-[191px] flex-col items-start gap-5">
         <p className="font-alumni text-4xl leading-8 font-semibold tracking-[-0.36px] text-hs-neutral-0">

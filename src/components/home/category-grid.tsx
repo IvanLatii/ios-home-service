@@ -20,7 +20,7 @@ export function CategoryGrid({ categories }: CategoryGridProps) {
               {category.label}
             </span>
             <span className="flex size-5 shrink-0 items-center justify-center rounded-[4px]">
-              <Icon className="size-5 text-hs-neutral-700" strokeWidth={1.75} />
+              <Icon className="size-5 text-hs-neutral-700" />
             </span>
           </button>
         );

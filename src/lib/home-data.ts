@@ -1,16 +1,18 @@
+import { HandCoins, UserPlus, type LucideIcon } from "lucide-react";
+
 import {
-  Armchair,
-  HandCoins,
-  MessageCircle,
-  PaintRoller,
-  SprayCan,
-  Trees,
-  Truck,
-  UserPlus,
-  WashingMachine,
-  Wrench,
-  type LucideIcon,
-} from "lucide-react";
+  IconAppliances,
+  IconCleaning,
+  IconConsulting,
+  IconFurniture,
+  IconGarden,
+  IconMoving,
+  IconRenovation,
+  IconRepairs,
+} from "@/components/icons/figma-icons";
+import type { ComponentType, SVGProps } from "react";
+
+type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
 
 export interface ServiceChip {
   id: string;
@@ -31,18 +33,18 @@ export const SERVICE_CHIPS: ServiceChip[] = [
 export interface ServiceCategory {
   id: string;
   label: string;
-  icon: LucideIcon;
+  icon: IconComponent;
 }
 
 export const SERVICE_CATEGORIES: ServiceCategory[] = [
-  { id: "repairs", label: "Repairs", icon: Wrench },
-  { id: "appliances", label: "Appliances", icon: WashingMachine },
-  { id: "cleaning", label: "Cleaning", icon: SprayCan },
-  { id: "furniture", label: "Furniture", icon: Armchair },
-  { id: "moving", label: "Moving", icon: Truck },
-  { id: "renovation", label: "Renovation", icon: PaintRoller },
-  { id: "garden", label: "Garden", icon: Trees },
-  { id: "consulting", label: "Consulting", icon: MessageCircle },
+  { id: "repairs", label: "Repairs", icon: IconRepairs },
+  { id: "appliances", label: "Appliances", icon: IconAppliances },
+  { id: "cleaning", label: "Cleaning", icon: IconCleaning },
+  { id: "furniture", label: "Furniture", icon: IconFurniture },
+  { id: "moving", label: "Moving", icon: IconMoving },
+  { id: "renovation", label: "Renovation", icon: IconRenovation },
+  { id: "garden", label: "Garden", icon: IconGarden },
+  { id: "consulting", label: "Consulting", icon: IconConsulting },
 ];
 
 export interface SecondaryBanner {

@@ -20,17 +20,19 @@ import {
 export function HomeScreen() {
   return (
     <div className="flex min-h-dvh w-full justify-center bg-hs-neutral-800/10">
-      <div className="relative flex h-dvh w-full max-w-[402px] flex-col overflow-y-auto bg-[linear-gradient(121.841deg,var(--color-hs-blue-500)_0%,var(--color-hs-blue-800)_47.617%)] sm:border-x sm:border-black/5 sm:shadow-xl [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 h-[522px] opacity-10"
-          style={{
-            backgroundImage:
-              "radial-gradient(rgba(255,255,255,0.8) 1px, transparent 1px)",
-            backgroundSize: "14px 14px",
-          }}
-        />
-
+      <div
+        className="relative flex h-dvh w-full max-w-[402px] flex-col overflow-y-auto sm:shadow-xl [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        style={{
+          // "pattern" (baked to 10% opacity) sits as the bottom-most layer of the
+          // header background, beneath the brand gradient — guaranteed regardless
+          // of sibling stacking order since it's part of this element's own paint.
+          backgroundImage:
+            "url(/figma/pattern-10.png), linear-gradient(121.841deg, var(--color-hs-blue-500) 0%, var(--color-hs-blue-800) 47.617%)",
+          backgroundSize: "1024px 1024px, auto",
+          backgroundPosition: "top left, top left",
+          backgroundRepeat: "no-repeat, no-repeat",
+        }}
+      >
         <HomeTopBar address="Shevchenka st., 47" notificationCount={8} />
         <HomeStats bonuses={487} currency="₴" orders={2} />
 
@@ -43,7 +45,7 @@ export function HomeScreen() {
           <SectionHeading title="Browse categories" actionLabel="View all" />
           <CategoryGrid categories={SERVICE_CATEGORIES} />
 
-          <div className="flex w-full flex-col items-start gap-6 px-2 pt-10 pb-8">
+          <div className="flex w-full flex-col items-start gap-6 px-2 pt-10 pb-[120px]">
             <PromoBanner
               heading="Join as a master & get new clients in your area"
               primaryActionLabel="Apply"

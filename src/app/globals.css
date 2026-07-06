@@ -59,6 +59,7 @@
   --color-hs-neutral-50: #f7f4f0;
   --color-hs-neutral-100: #efeae5;
   --color-hs-neutral-200: #ddd6cf;
+  --color-hs-neutral-400: #afa39d;
   --color-hs-neutral-600: #786c6e;
   --color-hs-neutral-700: #63515f;
   --color-hs-neutral-800: #553c54;
@@ -150,5 +151,9 @@
     @apply bg-background text-foreground;
     height: 100%;
     overscroll-behavior-y: none;
+    /* Matches the Geist "ss02"/"ss03" stylistic sets used throughout the Figma type styles */
+    font-feature-settings:
+      "ss02" 1,
+      "ss03" 1;
   }
 }
