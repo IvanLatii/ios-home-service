@@ -1,4 +1,5 @@
 import { Search, XCircle } from "lucide-react";
+import Link from "next/link";
 import type { ChangeEvent } from "react";
 
 import { cn } from "@/lib/utils";
@@ -10,6 +11,8 @@ interface SearchFieldProps {
   onValueChange?: (value: string) => void;
   autoFocus?: boolean;
   className?: string;
+  /** When set (and not interactive), tapping the field navigates here. */
+  href?: string;
 }
 
 /**
@@ -23,6 +26,7 @@ export function SearchField({
   onValueChange,
   autoFocus,
   className,
+  href,
 }: SearchFieldProps) {
   const isInteractive = onValueChange !== undefined;
 
@@ -45,14 +49,26 @@ export function SearchField({
   );
 
   if (!isInteractive) {
+    const content = (
+      <>
+        {icon}
+        <span className="flex-1 truncate font-sans text-base leading-6 font-medium tracking-[-0.16px] text-hs-neutral-600">
+          {placeholder}
+        </span>
+      </>
+    );
+
     return (
       <div className={cn("w-full px-2 pt-2", className)}>
-        <button type="button" className={containerClasses}>
-          {icon}
-          <span className="flex-1 truncate font-sans text-base leading-6 font-medium tracking-[-0.16px] text-hs-neutral-600">
-            {placeholder}
-          </span>
-        </button>
+        {href ? (
+          <Link href={href} className={containerClasses}>
+            {content}
+          </Link>
+        ) : (
+          <button type="button" className={containerClasses}>
+            {content}
+          </button>
+        )}
       </div>
     );
   }

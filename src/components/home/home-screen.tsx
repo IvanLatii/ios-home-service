@@ -29,7 +29,10 @@ export function HomeScreen() {
         <HomeStats bonuses={487} currency="₴" orders={2} />
 
         <div className="flex w-full flex-1 flex-col items-start overflow-clip rounded-t-[16px] bg-hs-neutral-50">
-          <SearchField placeholder="What do you need help with?" />
+          <SearchField
+            placeholder="What do you need help with?"
+            href="/search"
+          />
 
           <SectionHeading title="Popular services" />
           <ServiceChipRow chips={SERVICE_CHIPS} />
