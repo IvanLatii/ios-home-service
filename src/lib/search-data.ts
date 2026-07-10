@@ -20,7 +20,7 @@ export const DEFAULT_SERVICES: SearchableService[] = [
 
 /** Full catalog searched (substring match) once the user starts typing. */
 export const SEARCHABLE_SERVICES: SearchableService[] = [
-  { id: "faucet-repair", label: "Faucet repair" },
+  { id: "repairs", label: "Faucet repair" },
   { id: "faucet-replacement", label: "Faucet replacement" },
   { id: "faucet-installation", label: "Faucet installation" },
   { id: "buy-a-faucet", label: "Buy a faucet" },

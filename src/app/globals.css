@@ -49,6 +49,11 @@
 
   /* Home screen design tokens (from Figma "Home Service - iOS" file) */
   --font-alumni: var(--font-alumni-sans);
+  --animate-slide-in: slide-in-right 0.25s ease-out;
+  --animate-slide-up: slide-in-up 0.25s ease-out;
+  --animate-fade-in: fade-in 0.2s ease-out;
+  --animate-scale-in: scale-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --color-hs-blue-50: #edf5ff;
   --color-hs-blue-400: #5e97f0;
   --color-hs-blue-500: #0364ca;
   --color-hs-blue-800: #283694;
@@ -61,10 +66,13 @@
   --color-hs-neutral-50: #f7f4f0;
   --color-hs-neutral-100: #efeae5;
   --color-hs-neutral-200: #ddd6cf;
+  --color-hs-neutral-300: #c8bfb8;
   --color-hs-neutral-400: #afa39d;
+  --color-hs-neutral-500: #938783;
   --color-hs-neutral-600: #786c6e;
   --color-hs-neutral-700: #63515f;
   --color-hs-neutral-800: #553c54;
+  --color-hs-neutral-1000: #261b26;
 }
 
 :root {
@@ -139,6 +147,24 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+}
+
+/* ─── Page transition keyframes ─────────────────────────────────── */
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(4rem); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slide-in-up {
+  from { opacity: 0; transform: translateY(2rem); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.6); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
 @layer base {

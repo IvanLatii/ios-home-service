@@ -20,12 +20,6 @@ import {
   type SearchableService,
 } from "@/lib/search-data";
 
-/**
- * Recreation of the "402 / Home -> Search" Figma frame. Figma models this
- * screen as two static frames (empty query vs. an active "fau" query); here
- * both are driven by one real, controlled search input so typing/clearing
- * genuinely transitions between the "History" and "Categories" states.
- */
 export function SearchScreen() {
   const [query, setQuery] = useState("");
   const [recentSearches, setRecentSearches] = useState<SearchableService[]>(
@@ -106,7 +100,7 @@ export function SearchScreen() {
                   <SearchResultRow
                     key={service.id}
                     label={service.label}
-                    onSelect={() => setQuery(service.label)}
+                    href={`/order/${service.id}`}
                   />
                 ))}
               </div>
@@ -131,8 +125,8 @@ export function SearchScreen() {
                     <SearchResultRow
                       key={service.id}
                       label={service.label}
+                      href={`/order/${service.id}`}
                       highlight={query}
-                      onSelect={() => setQuery(service.label)}
                     />
                   ))
                 ) : (

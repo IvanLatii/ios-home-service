@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import type { ServiceCategory } from "@/lib/home-data";
 
 interface CategoryGridProps {
@@ -11,9 +13,9 @@ export function CategoryGrid({ categories }: CategoryGridProps) {
         const Icon = category.icon;
 
         return (
-          <button
+          <Link
             key={category.id}
-            type="button"
+            href={`/service/${category.id}`}
             className="flex min-w-[130px] flex-1 basis-[calc(50%-1px)] items-center gap-2 rounded-[8px] bg-hs-neutral-0 py-3.5 pl-4 pr-[18px]"
           >
             <span className="min-w-0 flex-1 truncate text-left font-sans text-base leading-6 font-medium tracking-[-0.16px] text-hs-neutral-700">
@@ -22,7 +24,7 @@ export function CategoryGrid({ categories }: CategoryGridProps) {
             <span className="flex size-5 shrink-0 items-center justify-center rounded-[4px]">
               <Icon className="size-5 text-hs-neutral-700" />
             </span>
-          </button>
+          </Link>
         );
       })}
     </div>
