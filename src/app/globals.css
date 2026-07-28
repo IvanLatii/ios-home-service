@@ -54,6 +54,7 @@
   --animate-fade-in: fade-in 0.2s ease-out;
   --animate-scale-in: scale-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
   --color-hs-blue-50: #edf5ff;
+  --color-hs-blue-100: #d8e9ff;
   --color-hs-blue-400: #5e97f0;
   --color-hs-blue-500: #0364ca;
   --color-hs-blue-800: #283694;
@@ -73,6 +74,8 @@
   --color-hs-neutral-700: #63515f;
   --color-hs-neutral-800: #553c54;
   --color-hs-neutral-1000: #261b26;
+  --color-hs-yellow-100: #fff2c7;
+  --color-hs-yellow-700: #a87808;
   /* DESIGN-TOKENS.md → Службові: neutral-800 з альфою 8% */
   --color-hs-opacity-8: #553c5414;
 

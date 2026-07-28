@@ -1,12 +1,16 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronLeft, Star, MapPin, Shield, X } from "lucide-react";
+import { ChevronLeft, Info, Star, X } from "lucide-react";
+import { useState } from "react";
 
 import {
   StatusBarCellularIcon,
   StatusBarWifiIcon,
   StatusBarBatteryIcon,
 } from "@/components/icons/figma-icons";
+import { cn } from "@/lib/utils";
 
 interface MasterScreenProps {
   serviceTitle: string;
@@ -18,41 +22,33 @@ interface MasterScreenProps {
   time: string;
 }
 
-const MASTER = {
-  name: "Oleksiy Kovalenko",
-  specialty: "Plumbing specialist",
-  rating: 4.9,
-  reviewCount: 138,
-  completedJobs: 247,
-  photoUrl: "https://picsum.photos/seed/master-alex/200/200",
-  badge: "Top rated",
-};
+type MasterMode = "auto" | "manual";
+
+/** Decorative avatar placeholders — same picsum-by-seed convention as photo mocks. */
+const AVATARS = [
+  "https://picsum.photos/seed/master-avatar-1/80/80",
+  "https://picsum.photos/seed/master-avatar-2/80/80",
+  "https://picsum.photos/seed/master-avatar-3/80/80",
+];
 
 export function MasterScreen({
-  serviceTitle,
-  optionLabel,
   serviceId,
   rawId,
   optionId,
   date,
   time,
 }: MasterScreenProps) {
-  const formattedDate = (() => {
-    const d = Number(date);
-    if (!d) return date;
-    return new Date(2026, 6, d).toLocaleDateString("en-GB", {
-      weekday: "long",
-      day: "numeric",
-      month: "long",
-    });
-  })();
+  const [masterMode, setMasterMode] = useState<MasterMode>("auto");
+
+  const reviewHref = `/review/${rawId}?option=${optionId}&date=${date}&time=${encodeURIComponent(time)}`;
 
   return (
     <div className="flex min-h-dvh w-full justify-center bg-hs-neutral-800/10">
       <div className="relative flex h-dvh w-full max-w-[402px] flex-col bg-hs-neutral-50 animate-slide-in overflow-hidden">
 
-        {/* ── Sticky header ──────────────────────────────────────── */}
-        <div className="sticky top-0 z-30 flex shrink-0 flex-col bg-hs-neutral-50">
+        {/* ── Header (not sticky — differs from Date) ─────────────── */}
+        <div className="flex shrink-0 flex-col bg-hs-neutral-50">
+          {/* Light status bar */}
           <div className="flex h-[62px] w-full shrink-0 items-center justify-between px-6 pt-[21px] pb-[19px] text-hs-neutral-1000">
             <p
               className="text-[17px] leading-[22px] font-[590]"
@@ -71,6 +67,7 @@ export function MasterScreen({
             </div>
           </div>
 
+          {/* Toolbar — same pattern as steps 1 and 2 */}
           <div className="flex items-center gap-2 px-6 pb-4">
             <Link
               href={`/date/${rawId}?option=${optionId}`}
@@ -81,7 +78,7 @@ export function MasterScreen({
             </Link>
             <div className="flex min-w-0 flex-1 flex-col gap-1 text-center">
               <p className="truncate font-sans text-base font-medium leading-6 tracking-[-0.16px] text-hs-neutral-800">
-                Your master
+                Master
               </p>
               <p className="font-sans text-xs font-medium leading-3 tracking-[-0.12px] text-hs-neutral-400">
                 Step 3 of 4
@@ -97,98 +94,120 @@ export function MasterScreen({
           </div>
         </div>
 
-        {/* ── Scrollable content ─────────────────────────────────── */}
-        <div className="flex flex-1 flex-col gap-3 overflow-y-auto px-2 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {/* ── Content ──────────────────────────────────────────────── */}
+        <div className="flex flex-1 flex-col overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <p className="px-6 py-4 font-alumni text-[36px] font-semibold leading-8 tracking-[-0.36px] text-hs-neutral-800">
+            Choose an option
+          </p>
 
-          {/* Master profile card */}
-          <div className="flex items-center gap-4 rounded-[12px] bg-hs-neutral-0 p-4">
-            <div className="relative size-[72px] shrink-0 overflow-hidden rounded-full">
-              <Image
-                src={MASTER.photoUrl}
-                alt={MASTER.name}
-                fill
-                sizes="72px"
-                className="object-cover"
-                unoptimized
-              />
-            </div>
-            <div className="flex flex-1 flex-col gap-1 min-w-0">
-              <p className="font-alumni text-[22px] font-semibold leading-7 tracking-[-0.22px] text-hs-neutral-800">
-                {MASTER.name}
-              </p>
-              <p className="font-sans text-sm font-medium leading-5 tracking-[-0.14px] text-hs-neutral-500">
-                {MASTER.specialty}
-              </p>
-              <div className="flex items-center gap-3 pt-0.5">
-                <div className="flex items-center gap-1">
-                  <Star className="size-3.5 fill-yellow-400 text-yellow-400" />
-                  <span className="font-sans text-sm font-semibold leading-5 text-hs-neutral-800">
-                    {MASTER.rating}
+          <div className="flex flex-col gap-2 px-2">
+            {/* Match me auto */}
+            <button
+              type="button"
+              onClick={() => setMasterMode("auto")}
+              className={cn(
+                "flex min-w-[330px] flex-col gap-3 rounded-[10px] border bg-hs-neutral-0 p-4 text-left",
+                masterMode === "auto" ? "border-hs-blue-500" : "border-transparent",
+              )}
+            >
+              <div className="flex flex-col gap-2 border-b border-hs-neutral-100 pb-3.5">
+                <div className="flex items-center gap-2">
+                  <span className="flex-1 font-sans text-base font-semibold leading-6 tracking-[-0.16px] text-hs-neutral-800">
+                    Match me auto
                   </span>
-                  <span className="font-sans text-sm text-hs-neutral-400">
-                    · {MASTER.reviewCount}
+                  <span className="shrink-0 rounded-[4px] bg-hs-blue-500 px-2 py-1.5 text-center font-sans text-xs font-medium leading-3 text-hs-blue-50">
+                    Recommended
                   </span>
                 </div>
-                <div className="flex items-center gap-1">
-                  <Shield className="size-3.5 text-hs-blue-500" strokeWidth={1.75} />
-                  <span className="font-sans text-xs font-medium text-hs-blue-500">
-                    {MASTER.badge}
-                  </span>
-                </div>
+                <p className="font-sans text-xs font-normal leading-3 text-hs-neutral-500">
+                  We find the best available master based on ratings and proximity. Fastest option.
+                </p>
               </div>
-            </div>
+
+              <div className="flex items-center gap-3">
+                <div className="flex items-center">
+                  {AVATARS.map((url, i) => (
+                    <div
+                      key={url}
+                      className={cn(
+                        "relative size-10 shrink-0 overflow-hidden rounded-full",
+                        i > 0 && "-ml-[10px] ring-[3px] ring-hs-neutral-0",
+                      )}
+                    >
+                      <Image
+                        src={url}
+                        alt=""
+                        fill
+                        sizes="40px"
+                        className="object-cover"
+                        unoptimized
+                      />
+                    </div>
+                  ))}
+                </div>
+                <div className="flex min-w-0 flex-1 flex-col gap-1">
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <Star key={i} className="size-4 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                    <span className="font-sans text-base font-semibold leading-6 text-hs-neutral-800">
+                      4.9
+                    </span>
+                  </div>
+                  <p className="font-sans text-xs font-normal leading-3 text-hs-neutral-500">
+                    Top-rated masters nearby
+                  </p>
+                </div>
+                <RadioIndicator selected={masterMode === "auto"} />
+              </div>
+            </button>
+
+            {/* Choose master manually */}
+            <button
+              type="button"
+              onClick={() => setMasterMode("manual")}
+              className={cn(
+                "flex items-center gap-3 rounded-[10px] border bg-hs-neutral-0 p-4 text-left",
+                masterMode === "manual" ? "border-hs-blue-500" : "border-transparent",
+              )}
+            >
+              <div className="flex min-w-0 flex-1 flex-col gap-1">
+                <span className="font-sans text-base font-semibold leading-6 text-hs-neutral-800">
+                  Choose master manually
+                </span>
+                <p className="font-sans text-xs font-normal leading-3 text-hs-neutral-500">
+                  It may take longer and cost more than usual.
+                </p>
+              </div>
+              <RadioIndicator selected={masterMode === "manual"} />
+            </button>
           </div>
 
-          {/* Booking summary card */}
-          <div className="flex flex-col gap-0 overflow-hidden rounded-[12px] bg-hs-neutral-0">
-            <p className="px-4 pt-4 pb-3 font-alumni text-[22px] font-semibold leading-7 tracking-[-0.22px] text-hs-neutral-800">
-              Booking details
-            </p>
-
-            <Row label="Service" value={serviceTitle} />
-            <Row label="Type" value={optionLabel} />
-            <Row label="Date" value={formattedDate} />
-            <Row label="Time" value={time} last />
-          </div>
-
-          {/* Address card */}
-          <div className="flex items-start gap-3 rounded-[12px] bg-hs-neutral-0 p-4">
-            <MapPin className="mt-0.5 size-5 shrink-0 text-hs-neutral-500" strokeWidth={1.75} />
-            <div className="flex flex-1 flex-col gap-0.5">
-              <p className="font-sans text-base font-medium leading-6 tracking-[-0.16px] text-hs-neutral-800">
-                Shevchenko Ave, 12, apt. 45
-              </p>
-              <p className="font-sans text-sm leading-5 text-hs-neutral-500">
-                Kyiv, 01001
-              </p>
-            </div>
-          </div>
-
-          {/* Jobs stat */}
-          <div className="flex items-center justify-center rounded-[12px] bg-hs-neutral-0 px-4 py-5">
-            <div className="flex flex-col items-center gap-1">
-              <p className="font-alumni text-[48px] font-semibold leading-none tracking-[-0.5px] text-hs-neutral-800">
-                {MASTER.completedJobs}
-              </p>
-              <p className="font-sans text-sm font-medium leading-5 tracking-[-0.14px] text-hs-neutral-500">
-                completed jobs
+          {/* Info block */}
+          <div className="px-2 py-6">
+            <div className="flex items-center gap-3 overflow-hidden rounded-[10px] border-[0.5px] border-hs-neutral-100 bg-hs-blue-100 px-4 py-3.5">
+              <Info className="size-5 shrink-0 text-hs-blue-500" strokeWidth={1.75} />
+              <p className="flex-1 font-sans text-xs font-medium leading-3 text-hs-blue-500">
+                All masters are verified, insured, and have passed background checks.
               </p>
             </div>
           </div>
         </div>
 
-        {/* ── Bottom CTA ─────────────────────────────────────────── */}
-        <div className="relative z-10 flex shrink-0 flex-col bg-[linear-gradient(to_top,var(--color-hs-neutral-50)_60%,rgba(247,244,240,0))]">
+        {/* ── Bottom nav — normal flow, NOT absolute (differs from Date) ── */}
+        <div className="flex w-full shrink-0 flex-col bg-[linear-gradient(to_top,var(--color-hs-neutral-50),rgba(247,244,240,0))]">
           <div className="px-6 pt-2 pb-0">
             <Link
-              href="/"
-              className="flex h-14 w-full items-center justify-center rounded-[8px] font-sans text-base font-medium leading-6 tracking-[-0.16px] text-hs-blue-50"
+              href={reviewHref}
+              className="flex h-14 w-full items-center justify-center rounded-[8px] px-[18px] py-4 font-sans text-base font-medium leading-6 tracking-[-0.16px] text-hs-blue-50"
               style={{
                 backgroundImage:
-                  "linear-gradient(170deg, var(--color-hs-blue-500) 0%, var(--color-hs-blue-800) 47.617%)",
+                  "linear-gradient(175.07deg, var(--color-hs-blue-500) 0%, var(--color-hs-blue-800) 47.617%)",
               }}
             >
-              Confirm booking
+              Continue
             </Link>
           </div>
           <div className="flex h-[34px] w-full items-end justify-center pb-2">
@@ -201,27 +220,17 @@ export function MasterScreen({
   );
 }
 
-function Row({
-  label,
-  value,
-  last = false,
-}: {
-  label: string;
-  value: string;
-  last?: boolean;
-}) {
+function RadioIndicator({ selected }: { selected: boolean }) {
   return (
-    <div
-      className={`flex items-center justify-between px-4 py-3 ${
-        last ? "pb-4" : "border-b border-hs-neutral-100"
-      }`}
-    >
-      <span className="font-sans text-sm font-medium leading-5 tracking-[-0.14px] text-hs-neutral-500">
-        {label}
-      </span>
-      <span className="font-sans text-sm font-medium leading-5 tracking-[-0.14px] text-hs-neutral-800">
-        {value}
-      </span>
+    <div className="flex size-6 shrink-0 items-center justify-center">
+      <div
+        className={cn(
+          "flex size-[22px] items-center justify-center rounded-full",
+          selected ? "bg-hs-blue-500" : "border border-hs-neutral-800 bg-hs-neutral-0",
+        )}
+      >
+        {selected && <span className="size-2 rounded-full bg-hs-neutral-0" />}
+      </div>
     </div>
   );
 }
