@@ -261,13 +261,19 @@ export function DateScreen({ serviceId, optionId, rawId }: DateScreenProps) {
               aria-disabled={!canContinue}
               onClick={(e) => { if (!canContinue) e.preventDefault(); }}
               className={cn(
-                "flex h-14 w-full items-center justify-center rounded-[8px] px-[18px] py-4 font-sans text-base font-medium leading-6 tracking-[-0.16px] text-hs-blue-50 transition-opacity",
-                canContinue ? "opacity-100" : "opacity-40 pointer-events-none",
+                "flex h-14 w-full items-center justify-center rounded-[8px] px-[18px] py-4 font-sans text-base font-medium leading-6 tracking-[-0.16px]",
+                canContinue
+                  ? "text-hs-blue-50"
+                  : "pointer-events-none bg-hs-neutral-200 text-hs-neutral-400",
               )}
-              style={{
-                backgroundImage:
-                  "linear-gradient(175.07deg, var(--color-hs-blue-500) 0%, var(--color-hs-blue-800) 47.617%)",
-              }}
+              style={
+                canContinue
+                  ? {
+                      backgroundImage:
+                        "linear-gradient(175.07deg, var(--color-hs-blue-500) 0%, var(--color-hs-blue-800) 47.617%)",
+                    }
+                  : undefined
+              }
             >
               Continue
             </Link>

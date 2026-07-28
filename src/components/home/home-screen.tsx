@@ -71,12 +71,11 @@ export function HomeScreen() {
           currency="₴"
           orders={hasOrder ? 3 : 2}
         />
+        {recentOrder && (
+          <RecentOrderCard date={recentOrder.date} time={recentOrder.time} />
+        )}
 
         <div className="flex w-full flex-1 flex-col items-start overflow-clip rounded-t-[16px] bg-hs-neutral-50">
-          {recentOrder && (
-            <RecentOrderCard date={recentOrder.date} time={recentOrder.time} />
-          )}
-
           <SearchField
             placeholder="What do you need help with?"
             href="/search"

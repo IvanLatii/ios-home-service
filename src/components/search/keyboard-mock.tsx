@@ -1,5 +1,7 @@
 import { Mic, Smile } from "lucide-react";
 
+import { cn } from "@/lib/utils";
+
 const ROW_1 = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"];
 const ROW_2 = ["a", "s", "d", "f", "g", "h", "j", "k", "l"];
 const ROW_3 = ["z", "x", "c", "v", "b", "n", "m"];
@@ -7,18 +9,23 @@ const ROW_3 = ["z", "x", "c", "v", "b", "n", "m"];
 interface KeyboardMockProps {
   /** Autocomplete suggestions shown above the keys, e.g. based on the active query. */
   suggestions?: [string, string, string];
+  className?: string;
 }
 
 /**
  * Decorative approximation of the native iOS keyboard (Figma "Keyboard/iOS").
  * Non-interactive — the real search input already accepts typed text; this
  * exists purely to match the visual structure of the Figma frame.
+ * Solid block edge-to-edge — no rounded corners, so no background can show through.
  */
-export function KeyboardMock({ suggestions }: KeyboardMockProps) {
+export function KeyboardMock({ suggestions, className }: KeyboardMockProps) {
   return (
     <div
       aria-hidden
-      className="flex w-full shrink-0 flex-col items-center gap-2 rounded-t-[14px] bg-[#e6e9ed] pt-3 pb-[10px]"
+      className={cn(
+        "flex w-full shrink-0 flex-col items-center gap-2 bg-[#e6e9ed] pt-3 pb-[10px]",
+        className,
+      )}
     >
       {suggestions ? (
         <div className="flex h-[25px] w-full items-center gap-5 px-[22px] text-[17px] leading-[22px] text-[#333]">

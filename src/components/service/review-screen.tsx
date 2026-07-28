@@ -118,8 +118,8 @@ export function ReviewScreen({
           </div>
         </div>
 
-        {/* ── Content (natural height — nav below takes the flex-1) ── */}
-        <div className="flex flex-col">
+        {/* ── Scrollable content — keeps nav on-screen on short viewports ── */}
+        <div className="flex min-h-0 flex-1 flex-col overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
 
           {/* Summary card — 7 rows */}
           <div className="px-2">
@@ -170,20 +170,20 @@ export function ReviewScreen({
               </span>
             </div>
           </div>
-        </div>
 
-        {/* ── Warning block — yellow, distinct from Master's blue info ── */}
-        <div className="px-2 pb-4">
-          <div className="flex items-center gap-2.5 rounded-[10px] bg-hs-yellow-100 px-4 py-3.5">
-            <Info className="size-5 shrink-0 text-hs-yellow-700" strokeWidth={1.75} />
-            <p className="flex-1 font-sans text-xs font-medium leading-3 text-hs-yellow-700">
-              Final cost may vary depending on the actual scope of work and materials required.
-            </p>
+          {/* Warning block — yellow, distinct from Master's blue info */}
+          <div className="px-2 pb-4">
+            <div className="flex items-center gap-2.5 rounded-[10px] bg-hs-yellow-100 px-4 py-3.5">
+              <Info className="size-5 shrink-0 text-hs-yellow-700" strokeWidth={1.75} />
+              <p className="flex-1 font-sans text-xs font-medium leading-3 text-hs-yellow-700">
+                Final cost may vary depending on the actual scope of work and materials required.
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* ── Bottom nav — grows to fill remaining space, content pinned to end ── */}
-        <div className="flex flex-1 flex-col justify-end bg-[linear-gradient(to_top,var(--color-hs-neutral-50),rgba(247,244,240,0))]">
+        {/* ── Bottom nav — fixed size, always fully in view ── */}
+        <div className="flex shrink-0 flex-col bg-[linear-gradient(to_top,var(--color-hs-neutral-50),rgba(247,244,240,0))]">
           <div className="px-6 pt-2 pb-0">
             <Link
               href={successHref}

@@ -139,7 +139,7 @@ export function SearchScreen() {
           )}
         </div>
 
-        <KeyboardMock suggestions={suggestions} />
+        <KeyboardMock suggestions={suggestions} className="sticky bottom-0 z-20" />
       </div>
     </div>
   );

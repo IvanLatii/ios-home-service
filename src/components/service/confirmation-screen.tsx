@@ -18,12 +18,13 @@ export function ConfirmationScreen({ date = "", time = "" }: ConfirmationScreenP
 
   return (
     <div className="flex min-h-dvh w-full justify-center bg-hs-neutral-800">
-      <div className="relative flex h-dvh w-full max-w-[402px] flex-col overflow-hidden bg-hs-neutral-800">
+      <div className="relative h-dvh w-full max-w-[402px] overflow-hidden bg-hs-neutral-800">
         {/* Status bar on dark background */}
         <StatusBarMock />
 
-        {/* Sheet stage — sheet is pinned to the bottom of the remaining height */}
-        <div className="relative flex flex-1 flex-col pt-2.5">
+        {/* Sheet stage — pinned from just below the status bar to the bottom,
+            so only that top strip stays dark regardless of viewport height. */}
+        <div className="absolute inset-x-0 top-[62px] bottom-0 flex flex-col pt-2.5">
           {/* Layer 2: stacked card peeking out behind the sheet */}
           <div
             aria-hidden
@@ -35,9 +36,9 @@ export function ConfirmationScreen({ date = "", time = "" }: ConfirmationScreenP
             {/* Noise wash */}
             <div aria-hidden className="pointer-events-none absolute inset-0 bg-[#f9f4ee] opacity-40" />
 
-            {/* Grabber */}
+            {/* Grabber — custom cutout shape exported from Figma, not a plain pill */}
             <div className="relative flex h-[14px] w-full items-center justify-center">
-              <div className="h-[14px] w-[68px] rounded-full bg-hs-neutral-300" />
+              <Image src="/figma/grabber.png" alt="" width={68} height={14} />
             </div>
 
             {/* Message */}
