@@ -45,6 +45,13 @@
 | `blue-500` | `#0364ca` |
 | `blue-800` | `#283694` |
 
+### Teal — статус замовлення
+
+| Токен | HEX | Призначення |
+|---|---|---|
+| `teal-300` | `#7ddbb8` | Тло тегу `Accepted` |
+| `teal-1000` | `#082e20` | Текст у ньому |
+
 ### Yellow — попередження
 
 | Токен | HEX | Призначення |
@@ -72,6 +79,7 @@
 | Токен | Шрифт | Розмір / інтерліньяж |
 |---|---|---|
 | `Headline/H1` | Alumni Sans SemiBold | 72 / 0.66 → ≈47.5px |
+| `Headline/H2` | Alumni Sans SemiBold | 56 / 48 |
 | `Headline/H3` | Alumni Sans SemiBold | 36 / 32 |
 | `Headline/H4` | Alumni Sans SemiBold | 20 / 18 |
 | `Body/16 Medium` | Geist Medium 500 | 16 / 24 |

@@ -1,8 +1,13 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 import { CategoryGrid } from "@/components/home/category-grid";
 import { HomeBottomNav } from "@/components/home/home-bottom-nav";
 import { HomeStats } from "@/components/home/home-stats";
 import { HomeTopBar } from "@/components/home/home-top-bar";
 import { PromoBanner } from "@/components/home/promo-banner";
+import { RecentOrderCard } from "@/components/home/recent-order-card";
 import { SearchField } from "@/components/home/search-field";
 import { SecondaryBanners } from "@/components/home/secondary-banners";
 import { SectionHeading } from "@/components/home/section-heading";
@@ -14,11 +19,46 @@ import {
 } from "@/lib/home-data";
 import { getPatternGradientBackground } from "@/lib/pattern-background";
 
+const RECENT_ORDER_KEY = "hs-recent-order";
+
+interface RecentOrder {
+  date: string;
+  time: string;
+}
+
 /**
  * Recreation of the "402 / Home" frame from the Home Service iOS Figma file.
  * Presentational only — no navigation or interaction wiring yet.
  */
 export function HomeScreen() {
+  // SCREEN-HOME2.md — стан 2: тригер ?ordered=1, прапорець живе в sessionStorage,
+  // щоб не злітати при переходах у межах сесії.
+  const [recentOrder, setRecentOrder] = useState<RecentOrder | null>(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("ordered") === "1") {
+      const order: RecentOrder = {
+        date: params.get("date") ?? "",
+        time: params.get("time") ?? "",
+      };
+      sessionStorage.setItem(RECENT_ORDER_KEY, JSON.stringify(order));
+      setRecentOrder(order);
+      return;
+    }
+
+    const stored = sessionStorage.getItem(RECENT_ORDER_KEY);
+    if (stored) {
+      try {
+        setRecentOrder(JSON.parse(stored));
+      } catch {
+        // ignore malformed sessionStorage content
+      }
+    }
+  }, []);
+
+  const hasOrder = recentOrder !== null;
+
   return (
     <div className="flex min-h-dvh w-full justify-center bg-hs-neutral-800/10">
       <div
@@ -26,9 +66,17 @@ export function HomeScreen() {
         style={getPatternGradientBackground(121.841)}
       >
         <HomeTopBar address="Shevchenka st., 47" notificationCount={8} />
-        <HomeStats bonuses={487} currency="₴" orders={2} />
+        <HomeStats
+          bonuses={hasOrder ? 101 : 487}
+          currency="₴"
+          orders={hasOrder ? 3 : 2}
+        />
 
         <div className="flex w-full flex-1 flex-col items-start overflow-clip rounded-t-[16px] bg-hs-neutral-50">
+          {recentOrder && (
+            <RecentOrderCard date={recentOrder.date} time={recentOrder.time} />
+          )}
+
           <SearchField
             placeholder="What do you need help with?"
             href="/search"

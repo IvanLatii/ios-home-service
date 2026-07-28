@@ -13,7 +13,7 @@ interface Props {
 
 export default async function SuccessPage({ params, searchParams }: Props) {
   const { id } = await params;
-  const { option: optionId } = await searchParams;
+  const { option: optionId, date = "", time = "" } = await searchParams;
 
   const service = getService(id);
   if (!service) notFound();
@@ -22,5 +22,5 @@ export default async function SuccessPage({ params, searchParams }: Props) {
     service.options.find((o) => o.id === optionId) ?? service.options[0];
   if (!option) notFound();
 
-  return <ConfirmationScreen />;
+  return <ConfirmationScreen date={date} time={decodeURIComponent(time)} />;
 }

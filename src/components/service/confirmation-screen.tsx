@@ -5,9 +5,17 @@ import { StatusBarMock } from "@/components/home/status-bar-mock";
 
 const SHIELD_SRC = "/figma/402/sheild-dynamic-clay.png";
 
+interface ConfirmationScreenProps {
+  /** Day of month within the fixed July 2026 demo range, e.g. "17". */
+  date?: string;
+  time?: string;
+}
+
 // SCREEN-SUCCESS.md — це нижня модалка поверх темного тла, не сторінка.
 // Три шари: тло neutral-800 → картка-«стос» neutral-400 (peek) → сам шит neutral-50.
-export function ConfirmationScreen() {
+export function ConfirmationScreen({ date = "", time = "" }: ConfirmationScreenProps) {
+  const backHref = `/?ordered=1&date=${encodeURIComponent(date)}&time=${encodeURIComponent(time)}`;
+
   return (
     <div className="flex min-h-dvh w-full justify-center bg-hs-neutral-800">
       <div className="relative flex h-dvh w-full max-w-[402px] flex-col overflow-hidden bg-hs-neutral-800">
@@ -75,7 +83,7 @@ export function ConfirmationScreen() {
                 Track order
               </button>
               <Link
-                href="/?ordered=1"
+                href={backHref}
                 className="flex h-14 w-full items-center justify-center rounded-[8px] bg-hs-neutral-0 font-sans text-base font-medium leading-6 tracking-[-0.16px] text-hs-neutral-800"
               >
                 Back to home
