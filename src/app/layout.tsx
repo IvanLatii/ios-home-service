@@ -1,16 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Alumni_Sans, Geist, Geist_Mono } from "next/font/google";
+import { Alumni_Sans } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 const alumniSans = Alumni_Sans({
   variable: "--font-alumni-sans",
@@ -42,7 +34,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${alumniSans.variable} h-full antialiased`}
+      className={`${GeistSans.variable} ${GeistMono.variable} ${alumniSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

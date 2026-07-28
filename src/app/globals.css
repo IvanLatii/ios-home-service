@@ -73,6 +73,19 @@
   --color-hs-neutral-700: #63515f;
   --color-hs-neutral-800: #553c54;
   --color-hs-neutral-1000: #261b26;
+  /* DESIGN-TOKENS.md → Службові: neutral-800 з альфою 8% */
+  --color-hs-opacity-8: #553c5414;
+
+  /* DESIGN-TOKENS.md → Радіуси (точні пікселі з Figma, окремо від shadcn-шкали вище) */
+  --radius-4: 4px;
+  --radius-6: 6px;
+  --radius-8: 8px;
+  --radius-16: 16px;
+  --radius-full: 999px;
+
+  /* DESIGN-TOKENS.md → Тіні */
+  --shadow-inner: inset 0 1px 2px 0 #1a15100d, inset 0 2px 4px 0 #1a151014;
+  --shadow-xl: 0 16px 32px -8px #1a151024, 0 8px 16px -4px #1a15101a;
 }
 
 :root {
