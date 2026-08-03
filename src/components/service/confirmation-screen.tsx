@@ -36,10 +36,9 @@ export function ConfirmationScreen({ date = "", time = "" }: ConfirmationScreenP
             {/* Noise wash */}
             <div aria-hidden className="pointer-events-none absolute inset-0 bg-[#f9f4ee] opacity-40" />
 
-            {/* Grabber — FIXES-3.md #6: restored PNG on a wider neutral-100 zone so the
-                notch reads against the light sheet background. */}
-            <div className="relative flex h-[28px] w-full items-center justify-center bg-hs-neutral-100">
-              <Image src="/figma/grabber.png" alt="" width={68} height={14} />
+            {/* Grabber — FIXES-4.md #6: back to a plain pill, half the previous width. */}
+            <div className="relative flex h-[14px] w-full items-center justify-center">
+              <div className="h-[5px] w-[34px] rounded-full bg-hs-neutral-300" />
             </div>
 
             {/* Message */}

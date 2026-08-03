@@ -1,6 +1,7 @@
-import { Bell, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 
 import { StatusBarMock } from "@/components/home/status-bar-mock";
+import { IconBell } from "@/components/icons/figma-icons";
 
 interface HomeTopBarProps {
   address: string;
@@ -22,7 +23,7 @@ export function HomeTopBar({ address, notificationCount }: HomeTopBarProps) {
           <span className="w-4 text-center font-sans text-sm leading-[14px] font-medium tracking-[-0.14px] text-hs-pink-1000">
             {notificationCount}
           </span>
-          <Bell className="size-4 text-hs-pink-1000" strokeWidth={2} />
+          <IconBell className="size-4 text-hs-pink-1000" />
         </div>
       </div>
     </div>

@@ -9,8 +9,8 @@ import {
   StatusBarWifiIcon,
   StatusBarBatteryIcon,
 } from "@/components/icons/figma-icons";
-import { BottomSheet } from "@/components/shared/bottom-sheet";
 import { DropdownField } from "@/components/shared/dropdown-field";
+import { OptionSheet } from "@/components/shared/option-sheet";
 import { PhotoPickerSheet, MOCK_PHOTOS } from "@/components/shared/photo-picker-sheet";
 import { PhotoList } from "@/components/shared/photo-list";
 import { KeyboardMock } from "@/components/search/keyboard-mock";
@@ -290,9 +290,9 @@ export function ServiceOrderScreen({
         </div>
       </div>
 
-      {/* Dropdown sheets */}
+      {/* Dropdown sheets — SHEET-OPTIONS.md */}
       {SHEETS.map((sheet) => (
-        <BottomSheet
+        <OptionSheet
           key={sheet.key}
           title={sheet.title}
           options={sheet.options as unknown as string[]}

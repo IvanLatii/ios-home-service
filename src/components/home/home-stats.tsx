@@ -18,10 +18,7 @@ export function HomeStats({ bonuses, currency, orders }: HomeStatsProps) {
             <p className="font-alumni text-7xl leading-[0.66] font-semibold tracking-[-0.72px] text-hs-neutral-0">
               {bonuses}
             </p>
-            <span
-              className="font-alumni text-4xl leading-5 font-semibold text-hs-neutral-0"
-              style={{ marginTop: "-4px" }}
-            >
+            <span className="font-alumni text-4xl leading-5 font-semibold text-hs-neutral-0">
               {currency}
             </span>
           </div>

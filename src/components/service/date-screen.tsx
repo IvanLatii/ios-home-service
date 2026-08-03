@@ -120,7 +120,7 @@ export function DateScreen({ optionId, rawId }: DateScreenProps) {
                 <span className="font-sans text-base font-medium leading-6 tracking-[-0.16px] text-hs-neutral-800">
                   Ivan L
                 </span>
-                <Pencil className="size-5 shrink-0 text-hs-neutral-400" strokeWidth={1.75} />
+                <Pencil className="size-5 shrink-0 text-hs-neutral-800" strokeWidth={1.75} />
               </div>
               <span className="font-sans text-xs font-medium leading-3 tracking-[-0.12px] text-hs-neutral-400">
                 +380 68 006 54 88
@@ -141,7 +141,7 @@ export function DateScreen({ optionId, rawId }: DateScreenProps) {
                 <span className="font-sans text-base font-medium leading-6 tracking-[-0.16px] text-hs-neutral-800">
                   Shevchenka st., 47.
                 </span>
-                <Pencil className="size-5 shrink-0 text-hs-neutral-400" strokeWidth={1.75} />
+                <Pencil className="size-5 shrink-0 text-hs-neutral-800" strokeWidth={1.75} />
               </div>
               <span className="font-sans text-xs font-medium leading-3 tracking-[-0.12px] text-hs-neutral-400">
                 Rivne, Entrance 1, 5th Floor, Apartment 28
