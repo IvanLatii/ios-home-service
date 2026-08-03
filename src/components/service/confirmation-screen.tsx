@@ -36,9 +36,10 @@ export function ConfirmationScreen({ date = "", time = "" }: ConfirmationScreenP
             {/* Noise wash */}
             <div aria-hidden className="pointer-events-none absolute inset-0 bg-[#f9f4ee] opacity-40" />
 
-            {/* Grabber — custom cutout shape exported from Figma, not a plain pill */}
+            {/* Grabber — FIXES-2.md #2: exported PNG (figma/grabber.png) is invisible
+                against the light sheet background; falling back to a plain pill. */}
             <div className="relative flex h-[14px] w-full items-center justify-center">
-              <Image src="/figma/grabber.png" alt="" width={68} height={14} />
+              <div className="h-[5px] w-[68px] rounded-full bg-hs-neutral-300" />
             </div>
 
             {/* Message */}

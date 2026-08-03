@@ -59,6 +59,12 @@ export function HomeScreen() {
 
   const hasOrder = recentOrder !== null;
 
+  // FIXES-2.md #5 — demo reset: tapping the card clears the flag and reverts to state 1.
+  const handleResetDemo = () => {
+    sessionStorage.removeItem(RECENT_ORDER_KEY);
+    setRecentOrder(null);
+  };
+
   return (
     <div className="flex min-h-dvh w-full justify-center bg-hs-neutral-800/10">
       <div
@@ -72,7 +78,11 @@ export function HomeScreen() {
           orders={hasOrder ? 3 : 2}
         />
         {recentOrder && (
-          <RecentOrderCard date={recentOrder.date} time={recentOrder.time} />
+          <RecentOrderCard
+            date={recentOrder.date}
+            time={recentOrder.time}
+            onClick={handleResetDemo}
+          />
         )}
 
         <div className="flex w-full flex-1 flex-col items-start overflow-clip rounded-t-[16px] bg-hs-neutral-50">

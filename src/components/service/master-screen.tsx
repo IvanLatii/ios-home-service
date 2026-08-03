@@ -32,7 +32,6 @@ const AVATARS = [
 ];
 
 export function MasterScreen({
-  serviceId,
   rawId,
   optionId,
   date,
@@ -85,7 +84,7 @@ export function MasterScreen({
               </p>
             </div>
             <Link
-              href={`/service/${serviceId}`}
+              href="/search"
               aria-label="Close"
               className="flex size-10 shrink-0 items-center justify-center rounded-[6px] bg-hs-neutral-0"
             >

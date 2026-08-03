@@ -37,7 +37,6 @@ export function ReviewScreen({
   optionLabel,
   rawId,
   optionId,
-  serviceId,
   date,
   time,
 }: ReviewScreenProps) {
@@ -109,7 +108,7 @@ export function ReviewScreen({
               </p>
             </div>
             <Link
-              href={`/service/${serviceId}`}
+              href="/search"
               aria-label="Close"
               className="flex size-10 shrink-0 items-center justify-center rounded-[6px] bg-hs-neutral-0"
             >

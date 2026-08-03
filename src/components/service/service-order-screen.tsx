@@ -55,7 +55,6 @@ type SheetKey = (typeof SHEETS)[number]["key"];
 
 export function ServiceOrderScreen({
   optionLabel,
-  serviceId,
   optionId,
   rawId,
 }: ServiceOrderScreenProps) {
@@ -115,7 +114,7 @@ export function ServiceOrderScreen({
             </div>
             <div className="flex items-center gap-2 px-6 pb-4">
               <Link
-                href={`/service/${serviceId}`}
+                href="/search"
                 aria-label="Go back"
                 className="flex size-10 shrink-0 items-center justify-center rounded-[6px] bg-hs-neutral-0"
               >
@@ -130,7 +129,7 @@ export function ServiceOrderScreen({
                 </p>
               </div>
               <Link
-                href={`/service/${serviceId}`}
+                href="/search"
                 aria-label="Close"
                 className="flex size-10 shrink-0 items-center justify-center rounded-[6px] bg-hs-neutral-0"
               >

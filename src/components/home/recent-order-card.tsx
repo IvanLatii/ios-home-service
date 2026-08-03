@@ -2,17 +2,23 @@ interface RecentOrderCardProps {
   /** Day of month within the fixed July 2026 demo range, e.g. "17". */
   date: string;
   time: string;
+  /** FIXES-2.md #5 — tapping the card resets the demo back to state 1. */
+  onClick?: () => void;
 }
 
 // SCREEN-HOME2.md — картка стану 2 головної. Тільки дата й час залежать від
 // вибору користувача, решта (номер, статус, послуга, сума) — константи макета.
-export function RecentOrderCard({ date, time }: RecentOrderCardProps) {
+export function RecentOrderCard({ date, time, onClick }: RecentOrderCardProps) {
   const day = Number(date);
   const formattedDate = day ? `${String(day).padStart(2, "0")}.07.2026` : "";
 
   return (
     <div className="w-full px-2 pb-6">
-      <div className="flex w-full flex-col gap-2.5 rounded-[10px] bg-hs-neutral-0 p-4">
+      <button
+        type="button"
+        onClick={onClick}
+        className="flex w-full flex-col gap-2.5 rounded-[10px] bg-hs-neutral-0 p-4 text-left"
+      >
         {/* Top part */}
         <div className="flex flex-col gap-1.5 border-b border-hs-neutral-100 pb-3.5">
           <div className="flex items-center">
@@ -43,7 +49,7 @@ export function RecentOrderCard({ date, time }: RecentOrderCardProps) {
             1,013.00 ₴
           </span>
         </div>
-      </div>
+      </button>
     </div>
   );
 }

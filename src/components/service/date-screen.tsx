@@ -43,7 +43,7 @@ const TIME_SLOTS = [
 
 const TODAY = 15; // July 15, 2026
 
-export function DateScreen({ serviceId, optionId, rawId }: DateScreenProps) {
+export function DateScreen({ optionId, rawId }: DateScreenProps) {
   const [selectedDate, setSelectedDate] = useState<number | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
 
@@ -95,7 +95,7 @@ export function DateScreen({ serviceId, optionId, rawId }: DateScreenProps) {
               </p>
             </div>
             <Link
-              href={`/service/${serviceId}`}
+              href="/search"
               aria-label="Close"
               className="flex size-10 shrink-0 items-center justify-center rounded-[6px] bg-hs-neutral-0"
             >
@@ -105,7 +105,7 @@ export function DateScreen({ serviceId, optionId, rawId }: DateScreenProps) {
         </div>
 
         {/* ── Scrollable content ─────────────────────────────────── */}
-        <div className="flex flex-1 flex-col overflow-y-auto pb-28 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex flex-1 flex-col overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
 
           {/* Contact person */}
           <p className="px-6 py-4 font-alumni text-[36px] font-semibold leading-8 tracking-[-0.36px] text-hs-neutral-800">
@@ -227,7 +227,7 @@ export function DateScreen({ serviceId, optionId, rawId }: DateScreenProps) {
           <p className="px-6 pt-8 pb-4 font-alumni text-[36px] font-semibold leading-8 tracking-[-0.36px] text-hs-neutral-800">
             Pick time
           </p>
-          <div className="flex flex-wrap gap-1 px-2 pb-4">
+          <div className="flex flex-wrap gap-1 px-2">
             {TIME_SLOTS.map((slot) => {
               const isAvailable = selectedDate !== null;
               const isActive = slot === selectedTime;
@@ -251,11 +251,9 @@ export function DateScreen({ serviceId, optionId, rawId }: DateScreenProps) {
               );
             })}
           </div>
-        </div>
 
-        {/* ── Bottom nav ─────────────────────────────────────────── */}
-        <div className="absolute inset-x-0 bottom-0 z-10 flex flex-col bg-[linear-gradient(to_top,var(--color-hs-neutral-50),rgba(247,244,240,0))]">
-          <div className="px-6 pt-2 pb-0">
+          {/* Continue — normal block after Pick time, scrolls with content (FIXES-2.md #3) */}
+          <div className="px-6 pt-6 pb-4">
             <Link
               href={masterHref}
               aria-disabled={!canContinue}
@@ -278,9 +276,11 @@ export function DateScreen({ serviceId, optionId, rawId }: DateScreenProps) {
               Continue
             </Link>
           </div>
-          <div className="flex h-[34px] w-full items-end justify-center pb-2">
-            <div className="h-[5px] w-[134px] rounded-full bg-black/30" />
-          </div>
+        </div>
+
+        {/* ── Home indicator — stays at the bottom of the screen ──── */}
+        <div className="flex h-[34px] w-full shrink-0 items-end justify-center pb-2">
+          <div className="h-[5px] w-[134px] rounded-full bg-black/30" />
         </div>
 
       </div>
