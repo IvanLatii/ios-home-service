@@ -23,7 +23,7 @@ export function KeyboardMock({ suggestions, className }: KeyboardMockProps) {
     <div
       aria-hidden
       className={cn(
-        "flex w-full shrink-0 flex-col items-center gap-2 bg-[#e6e9ed] pt-3 pb-[10px]",
+        "flex w-full shrink-0 flex-col items-center gap-2 rounded-t-[14px] bg-[#e6e9ed] pt-3 pb-[10px]",
         className,
       )}
     >

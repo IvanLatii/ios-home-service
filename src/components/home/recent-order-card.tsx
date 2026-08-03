@@ -22,10 +22,10 @@ export function RecentOrderCard({ date, time, onClick }: RecentOrderCardProps) {
         {/* Top part */}
         <div className="flex flex-col gap-1.5 border-b border-hs-neutral-100 pb-3.5">
           <div className="flex items-center">
-            <span className="flex-1 font-sans text-base font-semibold leading-6 tracking-[-0.16px] text-hs-neutral-800">
+            <span className="min-w-0 flex-1 truncate font-sans text-base font-semibold leading-6 tracking-[-0.16px] text-hs-neutral-800">
               Order #830517
             </span>
-            <span className="min-w-[16px] flex-1 rounded-[4px] bg-hs-teal-300 px-2 py-1.5 text-center font-sans text-xs font-medium leading-3 text-hs-teal-1000">
+            <span className="min-w-0 flex-1 rounded-[4px] bg-hs-teal-300 px-2 py-1.5 text-center font-sans text-xs font-medium leading-3 text-hs-teal-1000">
               Accepted
             </span>
           </div>

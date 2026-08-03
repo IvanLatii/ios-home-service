@@ -247,54 +247,44 @@ export function ServiceOrderScreen({
                 </span>
               </div>
             </div>
+
+            {/* Add service / Continue — normal block after content (FIXES-3.md #1) */}
+            <div className="flex items-center gap-2 px-6 pt-6 pb-4">
+              <button
+                type="button"
+                className="flex h-14 flex-1 items-center justify-center rounded-[8px] border border-hs-blue-500 bg-hs-neutral-50 px-[18px] font-sans text-base font-medium leading-6 tracking-[-0.16px]"
+              >
+                <span
+                  className="bg-clip-text text-transparent"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(165deg, var(--color-hs-blue-500) 0%, var(--color-hs-blue-800) 47.617%)",
+                  }}
+                >
+                  Add service
+                </span>
+              </button>
+              <Link
+                href={dateHref}
+                className="flex h-14 flex-1 items-center justify-center rounded-[8px] px-[18px] font-sans text-base font-medium leading-6 tracking-[-0.16px] text-hs-blue-50"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(170deg, var(--color-hs-blue-500) 0%, var(--color-hs-blue-800) 47.617%)",
+                }}
+              >
+                Continue
+              </Link>
+            </div>
           </div>
 
-          {/* ── Bottom: keyboard when focused, nav otherwise ─────── */}
+          {/* ── Bottom: keyboard when focused, home indicator otherwise ─────── */}
           {keyboardVisible ? (
             <div className="relative z-10 shrink-0 animate-slide-up">
-              {/* iOS-style done bar */}
-              <div className="flex items-center justify-end border-b border-[#b0b0b0]/30 bg-[#d1d5db] px-4 py-2">
-                <button
-                  type="button"
-                  onClick={() => setKeyboardVisible(false)}
-                  className="font-sans text-base font-medium text-hs-blue-500"
-                >
-                  Done
-                </button>
-              </div>
               <KeyboardMock />
             </div>
           ) : (
-            <div className="relative z-10 flex shrink-0 flex-col bg-[linear-gradient(to_top,var(--color-hs-neutral-50)_60%,rgba(247,244,240,0))]">
-              <div className="flex items-center gap-2 px-6 pt-2 pb-0">
-                <button
-                  type="button"
-                  className="flex h-14 flex-1 items-center justify-center rounded-[8px] border border-hs-blue-500 bg-hs-neutral-50 px-[18px] font-sans text-base font-medium leading-6 tracking-[-0.16px]"
-                >
-                  <span
-                    className="bg-clip-text text-transparent"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(165deg, var(--color-hs-blue-500) 0%, var(--color-hs-blue-800) 47.617%)",
-                    }}
-                  >
-                    Add service
-                  </span>
-                </button>
-                <Link
-                  href={dateHref}
-                  className="flex h-14 flex-1 items-center justify-center rounded-[8px] px-[18px] font-sans text-base font-medium leading-6 tracking-[-0.16px] text-hs-blue-50"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(170deg, var(--color-hs-blue-500) 0%, var(--color-hs-blue-800) 47.617%)",
-                  }}
-                >
-                  Continue
-                </Link>
-              </div>
-              <div className="flex h-[34px] w-full items-end justify-center pb-2">
-                <div className="h-[5px] w-[134px] rounded-full bg-black/30" />
-              </div>
+            <div className="relative z-10 flex h-[34px] w-full shrink-0 items-end justify-center pb-2">
+              <div className="h-[5px] w-[134px] rounded-full bg-black/30" />
             </div>
           )}
         </div>

@@ -111,10 +111,10 @@ export function MasterScreen({
             >
               <div className="flex flex-col gap-2 border-b border-hs-neutral-100 pb-3.5">
                 <div className="flex items-center gap-2">
-                  <span className="flex-1 font-sans text-base font-semibold leading-6 tracking-[-0.16px] text-hs-neutral-800">
+                  <span className="min-w-0 flex-1 truncate font-sans text-base font-semibold leading-6 tracking-[-0.16px] text-hs-neutral-800">
                     Match me auto
                   </span>
-                  <span className="min-w-[16px] flex-1 rounded-[4px] bg-hs-blue-500 px-2 py-1.5 text-center font-sans text-xs font-medium leading-3 text-hs-blue-50">
+                  <span className="min-w-0 flex-1 rounded-[4px] bg-hs-blue-500 px-2 py-1.5 text-center font-sans text-xs font-medium leading-3 text-hs-blue-50">
                     Recommended
                   </span>
                 </div>

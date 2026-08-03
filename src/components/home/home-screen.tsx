@@ -97,7 +97,7 @@ export function HomeScreen() {
           <SectionHeading title="Browse categories" actionLabel="View all" />
           <CategoryGrid categories={SERVICE_CATEGORIES} />
 
-          <div className="flex w-full flex-col items-start gap-6 px-2 pt-10 pb-[120px]">
+          <div className="flex w-full flex-col items-start gap-6 px-2 pt-10 pb-6">
             <PromoBanner
               heading="Join as a master & get new clients in your area"
               primaryActionLabel="Apply"

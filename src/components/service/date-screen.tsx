@@ -161,14 +161,14 @@ export function DateScreen({ optionId, rawId }: DateScreenProps) {
                   <span className="font-sans text-base font-semibold leading-6 tracking-[-0.16px] text-hs-neutral-1000">
                     July 2026
                   </span>
-                  <ChevronRight className="size-5 text-hs-neutral-1000" strokeWidth={2} />
+                  <ChevronRight className="size-5 text-hs-blue-500" strokeWidth={2} />
                 </div>
                 <div className="flex items-center gap-3">
                   <button type="button" aria-label="Previous month">
-                    <ChevronLeft className="size-6 text-hs-neutral-700" strokeWidth={2} />
+                    <ChevronLeft className="size-6 text-hs-blue-500" strokeWidth={2} />
                   </button>
                   <button type="button" aria-label="Next month">
-                    <ChevronRight className="size-6 text-hs-neutral-700" strokeWidth={2} />
+                    <ChevronRight className="size-6 text-hs-blue-500" strokeWidth={2} />
                   </button>
                 </div>
               </div>
@@ -203,15 +203,23 @@ export function DateScreen({ optionId, rawId }: DateScreenProps) {
                             setSelectedTime(null);
                           }}
                           className={cn(
-                            "flex size-11 items-center justify-center rounded-full font-sans text-base leading-6 transition-colors",
+                            "flex size-11 items-center justify-center font-sans text-base leading-6 transition-colors",
                             isSelected
-                              ? "bg-hs-blue-500 font-semibold text-hs-neutral-0"
-                              : isToday
-                                ? "font-semibold text-hs-blue-500"
-                                : isPast
-                                  ? "text-hs-neutral-300"
-                                  : "font-medium text-hs-neutral-800 hover:bg-hs-neutral-100",
+                              ? "rounded-[6px] font-semibold text-hs-blue-50"
+                              : "rounded-full",
+                            !isSelected && isToday && "font-semibold text-hs-blue-500",
+                            !isSelected &&
+                              !isToday &&
+                              "font-medium text-hs-neutral-800 hover:bg-hs-neutral-100",
                           )}
+                          style={
+                            isSelected
+                              ? {
+                                  backgroundImage:
+                                    "linear-gradient(175.07deg, var(--color-hs-blue-500) 0%, var(--color-hs-blue-800) 47.617%)",
+                                }
+                              : undefined
+                          }
                         >
                           {day}
                         </button>
@@ -238,13 +246,21 @@ export function DateScreen({ optionId, rawId }: DateScreenProps) {
                   disabled={!isAvailable}
                   onClick={() => setSelectedTime(slot)}
                   className={cn(
-                    "flex min-w-[132px] flex-1 items-center justify-center rounded-[6px] bg-hs-neutral-0 px-4 py-3 font-sans text-base leading-6 transition-colors",
+                    "flex min-w-[132px] flex-1 items-center justify-center rounded-[6px] px-4 py-3 font-sans text-base leading-6 transition-colors",
                     isActive
-                      ? "font-semibold text-hs-blue-500"
+                      ? "font-semibold text-hs-blue-50"
                       : isAvailable
-                        ? "font-medium text-hs-neutral-700 hover:bg-hs-neutral-100"
-                        : "font-medium text-hs-neutral-400",
+                        ? "bg-hs-neutral-0 font-medium text-hs-neutral-700 hover:bg-hs-neutral-100"
+                        : "bg-hs-neutral-0 font-medium text-hs-neutral-400",
                   )}
+                  style={
+                    isActive
+                      ? {
+                          backgroundImage:
+                            "linear-gradient(175.07deg, var(--color-hs-blue-500) 0%, var(--color-hs-blue-800) 47.617%)",
+                        }
+                      : undefined
+                  }
                 >
                   {slot}
                 </button>

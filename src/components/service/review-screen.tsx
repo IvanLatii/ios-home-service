@@ -179,11 +179,9 @@ export function ReviewScreen({
               </p>
             </div>
           </div>
-        </div>
 
-        {/* ── Bottom nav — fixed size, always fully in view ── */}
-        <div className="flex shrink-0 flex-col bg-[linear-gradient(to_top,var(--color-hs-neutral-50),rgba(247,244,240,0))]">
-          <div className="px-6 pt-2 pb-0">
+          {/* Confirm order — normal block after warning, scrolls with content (FIXES-3.md #2) */}
+          <div className="px-6 pt-6 pb-4">
             <Link
               href={successHref}
               className="flex h-14 w-full items-center justify-center rounded-[8px] px-[18px] py-4 font-sans text-base font-medium leading-6 tracking-[-0.16px] text-hs-blue-50"
@@ -195,9 +193,11 @@ export function ReviewScreen({
               Confirm order
             </Link>
           </div>
-          <div className="flex h-[34px] w-full items-end justify-center pb-2">
-            <div className="h-[5px] w-[134px] rounded-full bg-black/30" />
-          </div>
+        </div>
+
+        {/* ── Home indicator — stays at the bottom of the screen ──── */}
+        <div className="flex h-[34px] w-full shrink-0 items-end justify-center pb-2">
+          <div className="h-[5px] w-[134px] rounded-full bg-black/30" />
         </div>
 
       </div>
