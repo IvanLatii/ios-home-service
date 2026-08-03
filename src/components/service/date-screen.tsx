@@ -210,7 +210,7 @@ export function DateScreen({ optionId, rawId }: DateScreenProps) {
                             !isSelected && isToday && "font-semibold text-hs-blue-500",
                             !isSelected &&
                               !isToday &&
-                              "font-medium text-hs-neutral-800 hover:bg-hs-neutral-100",
+                              "font-medium text-hs-neutral-800",
                           )}
                           style={
                             isSelected
@@ -250,7 +250,7 @@ export function DateScreen({ optionId, rawId }: DateScreenProps) {
                     isActive
                       ? "font-semibold text-hs-blue-50"
                       : isAvailable
-                        ? "bg-hs-neutral-0 font-medium text-hs-neutral-700 hover:bg-hs-neutral-100"
+                        ? "bg-hs-neutral-0 font-medium text-hs-neutral-700"
                         : "bg-hs-neutral-0 font-medium text-hs-neutral-400",
                   )}
                   style={

@@ -68,7 +68,7 @@ export function HomeScreen() {
   return (
     <div className="flex min-h-dvh w-full justify-center bg-hs-neutral-800/10">
       <div className="relative flex h-dvh w-full max-w-[402px] flex-col overflow-y-auto bg-hs-neutral-50 sm:shadow-xl [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        <div className="flex w-full shrink-0 flex-col" style={getPatternGradientBackground(121.841)}>
+        <div className="-mb-4 flex w-full shrink-0 flex-col" style={getPatternGradientBackground(121.841)}>
           <HomeTopBar address="Shevchenka st., 47" notificationCount={8} />
           <HomeStats
             bonuses={hasOrder ? 101 : 487}
@@ -96,7 +96,7 @@ export function HomeScreen() {
           <SectionHeading title="Browse categories" actionLabel="View all" />
           <CategoryGrid categories={SERVICE_CATEGORIES} />
 
-          <div className="flex w-full flex-col items-start gap-6 px-2 pt-2 pb-6">
+          <div className="flex w-full flex-col items-start gap-6 px-2 pt-2 pb-1">
             <PromoBanner
               heading="Join as a master & get new clients in your area"
               primaryActionLabel="Apply"

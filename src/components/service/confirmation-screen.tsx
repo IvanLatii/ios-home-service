@@ -17,8 +17,8 @@ export function ConfirmationScreen({ date = "", time = "" }: ConfirmationScreenP
   const backHref = `/?ordered=1&date=${encodeURIComponent(date)}&time=${encodeURIComponent(time)}`;
 
   return (
-    <div className="flex min-h-dvh w-full justify-center bg-hs-neutral-800">
-      <div className="relative h-dvh w-full max-w-[402px] overflow-hidden bg-hs-neutral-800">
+    <div className="flex min-h-dvh w-full justify-center bg-hs-neutral-800/10">
+      <div className="relative h-dvh w-full max-w-[402px] overflow-hidden bg-hs-neutral-800 sm:shadow-xl">
         {/* Status bar on dark background */}
         <StatusBarMock />
 
@@ -44,12 +44,16 @@ export function ConfirmationScreen({ date = "", time = "" }: ConfirmationScreenP
             {/* Message */}
             <div className="relative flex flex-1 flex-col items-center justify-center gap-8 p-6">
               <div className="relative flex size-40 shrink-0 items-center justify-center">
+                {/* FIXES-5.md #6 — unoptimized: the source PNG is 320x320 (exact 2x for
+                    this 160x160 slot); Next's optimizer was rounding up to a 384px
+                    breakpoint and upscaling past the source, causing visible blur. */}
                 <Image
                   src={SHIELD_SRC}
                   alt=""
                   width={160}
                   height={160}
                   aria-hidden
+                  unoptimized
                   className="absolute left-[-12px] top-[12px] opacity-[0.32] blur-lg"
                 />
                 <Image
@@ -57,6 +61,7 @@ export function ConfirmationScreen({ date = "", time = "" }: ConfirmationScreenP
                   alt=""
                   width={160}
                   height={160}
+                  unoptimized
                   className="relative"
                 />
               </div>

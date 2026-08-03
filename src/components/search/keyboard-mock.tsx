@@ -10,18 +10,20 @@ interface KeyboardMockProps {
   /** Autocomplete suggestions shown above the keys, e.g. based on the active query. */
   suggestions?: [string, string, string];
   className?: string;
+  /** FIXES-5.md #4 — when provided, the return key is interactive and dismisses the keyboard. */
+  onReturn?: () => void;
 }
 
 /**
  * Decorative approximation of the native iOS keyboard (Figma "Keyboard/iOS").
- * Non-interactive — the real search input already accepts typed text; this
+ * Otherwise non-interactive — the real search input already accepts typed text; this
  * exists purely to match the visual structure of the Figma frame.
  * Solid block edge-to-edge — no rounded corners, so no background can show through.
  */
-export function KeyboardMock({ suggestions, className }: KeyboardMockProps) {
+export function KeyboardMock({ suggestions, className, onReturn }: KeyboardMockProps) {
   return (
     <div
-      aria-hidden
+      aria-hidden={!onReturn}
       className={cn(
         "flex w-full shrink-0 flex-col items-center gap-2 rounded-t-[14px] bg-[#e6e9ed] pt-3 pb-[10px]",
         className,
@@ -64,9 +66,19 @@ export function KeyboardMock({ suggestions, className }: KeyboardMockProps) {
         <div className="flex w-full items-center gap-1.5">
           <Key letter="123" flexBasis="w-[22%]" />
           <div className="h-[45px] flex-1 rounded-[8.5px] bg-white/30" />
-          <div className="flex h-[45px] w-[22%] items-center justify-center rounded-[8.5px] bg-hs-blue-500 text-sm font-medium text-white">
-            return
-          </div>
+          {onReturn ? (
+            <button
+              type="button"
+              onClick={onReturn}
+              className="flex h-[45px] w-[22%] items-center justify-center rounded-[8.5px] bg-hs-blue-500 text-sm font-medium text-white"
+            >
+              return
+            </button>
+          ) : (
+            <div className="flex h-[45px] w-[22%] items-center justify-center rounded-[8.5px] bg-hs-blue-500 text-sm font-medium text-white">
+              return
+            </div>
+          )}
         </div>
       </div>
 

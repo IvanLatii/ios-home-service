@@ -71,6 +71,7 @@ export function ServiceOrderScreen({
   const [showPhotoSheet, setShowPhotoSheet] = useState(false);
 
   const textareaAnchorRef = useRef<HTMLDivElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   /* Scroll textarea into view when keyboard appears */
   useEffect(() => {
@@ -218,9 +219,17 @@ export function ServiceOrderScreen({
               >
                 <div className="pointer-events-none absolute inset-0 rounded-[8px] bg-hs-neutral-100" />
                 <textarea
+                  ref={textareaRef}
                   value={comment}
                   onChange={(e) => setComment(e.target.value)}
                   onFocus={() => setKeyboardVisible(true)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      e.currentTarget.blur();
+                      setKeyboardVisible(false);
+                    }
+                  }}
                   placeholder="Describe the issue in more detail"
                   className="relative h-full w-full resize-none bg-transparent p-4 font-sans text-base font-medium leading-6 tracking-[-0.16px] text-hs-neutral-800 placeholder:text-hs-neutral-600 focus:outline-none"
                   style={{
@@ -280,7 +289,12 @@ export function ServiceOrderScreen({
           {/* ── Bottom: keyboard when focused, home indicator otherwise ─────── */}
           {keyboardVisible ? (
             <div className="relative z-10 shrink-0 animate-slide-up">
-              <KeyboardMock />
+              <KeyboardMock
+                onReturn={() => {
+                  textareaRef.current?.blur();
+                  setKeyboardVisible(false);
+                }}
+              />
             </div>
           ) : (
             <div className="relative z-10 flex h-[34px] w-full shrink-0 items-end justify-center pb-2">

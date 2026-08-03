@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { Check, X } from "lucide-react";
+import { X } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -97,16 +97,17 @@ export function OptionSheet({
                     {option}
                   </span>
                   <span className="flex size-6 shrink-0 items-center justify-center">
+                    {/* FIXES-5.md #1 — deliberate deviation from Figma: round radio, not a square checkbox. */}
                     <span
                       className={cn(
-                        "flex size-[22px] shrink-0 items-center justify-center rounded-[4px] border",
+                        "flex size-[22px] shrink-0 items-center justify-center rounded-full border",
                         isSelected
-                          ? "border-hs-blue-500 bg-hs-blue-500"
+                          ? "border-hs-blue-500 bg-hs-neutral-0"
                           : "border-hs-neutral-800 bg-hs-neutral-0",
                       )}
                     >
                       {isSelected && (
-                        <Check className="size-3.5 text-hs-neutral-0" strokeWidth={3} />
+                        <span className="size-3 rounded-full bg-hs-blue-500" />
                       )}
                     </span>
                   </span>

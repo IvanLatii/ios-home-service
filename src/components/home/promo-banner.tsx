@@ -31,13 +31,13 @@ export function PromoBanner({
         <div className="flex w-full items-start gap-5">
           <button
             type="button"
-            className="font-sans text-sm leading-5 font-medium tracking-[-0.14px] text-hs-neutral-0 underline-offset-4 hover:underline"
+            className="font-sans text-sm leading-5 font-medium tracking-[-0.14px] text-hs-neutral-0"
           >
             {primaryActionLabel}
           </button>
           <button
             type="button"
-            className="font-sans text-sm leading-5 font-medium tracking-[-0.14px] text-hs-neutral-0 underline-offset-4 hover:underline"
+            className="font-sans text-sm leading-5 font-medium tracking-[-0.14px] text-hs-neutral-0"
           >
             {secondaryActionLabel}
           </button>
